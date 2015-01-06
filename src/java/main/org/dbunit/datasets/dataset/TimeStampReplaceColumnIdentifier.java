@@ -16,7 +16,7 @@ public class TimeStampReplaceColumnIdentifier {
 		columnLoop: for (final Column column : table.getTableMetaData().getColumns()) {
 			for (int row = 0; row < table.getRowCount(); row++) {
 				final Object value = table.getValue(row, column.getColumnName());
-				if (value != null && !patternRegex.matches(value.toString())) {
+				if (value != null && !value.toString().matches(patternRegex)) {
 					continue columnLoop;
 				}
 			}
