@@ -188,40 +188,5 @@ public class DateUtils {
 		cthen.add(Calendar.DATE, days);
 		return cthen.getTime();
 	}
-
-	public static Date addMonths(final Date date, final int mons) {
-		if (date == null) {
-			return null;
-		}
-		final Calendar cthen = Calendar.getInstance();
-		cthen.setTime(date);
-		cthen.add(Calendar.MONTH, mons);
-		return cthen.getTime();
-	}
-	
-	/**
-	 * returns a Date with today's date and NO time information.
-	 * 
-	 * @return
-	 */
-	public static Date nowTimeless() {
-		final Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		return cal.getTime();
-	}
-
-	public static Date max(final Date date1, final Date date2) {
-		if(date2 == null){
-			return date1;
-		}
-		if(date1 == null || date2.compareTo(date1) > 0){
-			return date2;
-		}else{
-			return date1;
-		}
-	}
 	
 }
