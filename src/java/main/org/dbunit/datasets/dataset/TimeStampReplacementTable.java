@@ -34,16 +34,12 @@ public class TimeStampReplacementTable implements ITable {
 	private Map<String, TimeStampReplaceColumnInfo> dateColumns;
 
 	/**
-	 * Create a new ReplacementTable object that decorates the specified table.
+	 * Create a new TimeStampReplacementTable object that decorates the specified table.
 	 *
 	 * @param table
 	 *            the decorated table
 	 * @throws DataSetException
 	 */
-	// public EmbeddedScriptReplacementTable(ITable table)
-	// {
-	// this(table, new HashMap(), new HashMap(), null, null);
-	// }
 
 	public TimeStampReplacementTable(final ITable table, final int days)  {
 		_table = table;
@@ -71,11 +67,6 @@ public class TimeStampReplacementTable implements ITable {
 		if (logger.isDebugEnabled()) {
 			logger.debug("getValue(row={}, columnName={}) - start", Integer.toString(row), column);
 		}
-
-		// String tableAndColumn = _table.getTableMetaData().getTableName()+"."
-		// + column;
-		// String pattern = "PPP905.ST??DT";
-		// String datePattern = "yyMMdd";
 		final Object value = _table.getValue(row, column);
 		if (dateColumns.containsKey(column) && value != null && value.toString().trim().length() > 0) {
 			final String datePattern = dateColumns.get(column).getPattern();
